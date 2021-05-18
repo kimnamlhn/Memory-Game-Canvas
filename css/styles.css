@@ -1,0 +1,15 @@
+#canvas{
+    overflow: hidden;
+    /* margin-left: 400px;
+    margin-top: 60px; */
+    margin-left: 200px;
+
+}
+
+
+body {
+    background: #577471;
+    user-select: none;
+    -webkit-touch-callout: none !important;
+    overflow: hidden;
+}
