@@ -77,7 +77,7 @@ function main() {
         }
 
         // lấy ảnh win 
-        winImage.src = `./assets/image/youarewin.jpg`;
+        //winImage.src = `./assets/image/youarewin.jpg`;
     }
 
     //load nhạc từ nguồn
@@ -272,17 +272,14 @@ function main() {
 
     //khởi tạo game
     function initGame() {
-
+        isWinScreen = false;
+        click = true;
         loadImages();
         loadMusic();
         // drawCards();
         // playBackgroundMusic();
         setTimeout(drawCards, 300);
         setTimeout(playBackgroundMusic, 500);
-
-        isWinScreen = false;
-        click = true;
-
     }
 
     initGame();
