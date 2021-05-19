@@ -279,7 +279,7 @@ function main() {
         // drawCards();
         // playBackgroundMusic();
         setTimeout(drawCards, 300);
-        setTimeout(playBackgroundMusic, 500);
+        //setTimeout(playBackgroundMusic, 500);
     }
 
     initGame();
