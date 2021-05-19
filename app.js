@@ -31,8 +31,8 @@ function main() {
     //có phải màn hình restart
     var isWinScreen = false;
 
-    //arnh win
-    var winImage = new Image();
+    //danh sách các âm thanh
+    var musicList = [];
 
     //sự kiện khi click canvas
     window.addEventListener("click", onClickCanvas);
@@ -82,52 +82,36 @@ function main() {
 
     //load nhạc từ nguồn
     function loadMusic() {
-        arr[7] = {
+        musicList={
             backgroundAudio: document.getElementById("backgroundMusic"),
             audioWin: document.getElementById("gameWinMusic"),
-            flipCardAudio: document.getElementById("flipCardMusic")
-        };
+            flipCardAudio: document.getElementById("flipCardMusic")        }
     }
 
     //mở nhạc khi mở ảnh
     function playOpenCardMusic() {
-        arr[7].flipCardAudio.pause();
-        arr[7].flipCardAudio.currentTime = 0;
-        arr[7].flipCardAudio.play();
+        musicList.flipCardAudio.pause();
+        musicList.flipCardAudio.currentTime = 0;
+        musicList.flipCardAudio.play();
     }
 
     //nhạc nền
     function playBackgroundMusic() {
-        // arr[7].backgroundAudio.volume = 0.5;
-        arr[7].backgroundAudio.play();
-        arr[7].audioWin.pause();
-        arr[7].audioWin.currentTime = 0;
+        musicList.backgroundAudio.play();
+        musicList.audioWin.pause();
+        musicList.audioWin.currentTime = 0;
     }
 
     //nhạc chiến thắng
     function playWinAudio() {
-        arr[7].playWinAudio.currentTime = 0;
-        arr[7].audioWin.play();
+        musicList.playWinAudio.currentTime = 0;
+        musicList.audioWin.play();
 
     }
     //************************************CÁC HÀM VỀ GAME*********************************************** */
 
     //lấy vị trí chuột hiện tại
     function getPosCursor(e) {
-        // let x;
-        // let y;
-        // if (e.pageX != undefined && e.pageY != undefined) {
-        //     x = e.pageX;
-        //     y = e.pageY;
-        // }
-        // else {
-        //     x = e.clientX + document.body.scrollLeft +
-        //         document.documentElement.scrollLeft;
-        //     y = e.clientY + document.body.scrollTop +
-        //         document.documentElement.scrollTop;
-        // }
-        // x -= canvas.offsetLeft;
-        // y -= canvas.offsetTop;
         const offset = canvas.getBoundingClientRect();
 
         const x = e.clientX - offset.left;
@@ -183,9 +167,6 @@ function main() {
             }
 
 
-
-            // var row = Math.floor((getPosCursor(e)[1]) / xDistanceImage);
-            // var col = Math.floor((getPosCursor(e)[0]) / yDistanceImage);
 
             //debuging
             // console.log(row);
@@ -249,8 +230,9 @@ function main() {
         // vẽ ảnh back 
         cardImgArr.forEach(row => row.forEach(obj => ctx.drawImage(obj.img[1], obj.startPointX, obj.startPointY, widthImage, heightImage)));
 
-        console.log(cardImgArr);
-        console.log(arr);
+        //debuging
+        // console.log(cardImgArr);
+        // console.log(arr);
     }
 
 
@@ -265,7 +247,7 @@ function main() {
 
         //ctx.drawImage(winImage, 600, 300);
 
-        arr[7].backgroundAudio.pause();
+        musicList.backgroundAudio.pause();
         setTimeout(playWinAudio, 10);
     }
 
