@@ -243,10 +243,15 @@ function main() {
         ctx.clearRect(0, 0, 1000, 1000);
 
         ctx.font = '50px serif';
-        ctx.fillText('YOU WIN! CLICK TO RESTART', 80, 250, 5000);
+        ctx.fillText('YOU WIN! CLICK TO RESTART', 100, 500, 5000);
 
-        //ctx.drawImage(winImage, 600, 300);
-
+        var background = new Image();
+        background.src = './assets/images/youarewin.jpg';
+        // Make sure the image is loaded first otherwise nothing will draw.
+        background.onload = function(){
+            ctx.drawImage(background,120,0, 700, 400);   
+            }
+    
         musicList.backgroundAudio.pause();
         setTimeout(playWinAudio, 10);
     }
@@ -265,7 +270,6 @@ function main() {
     }
 
     initGame();
-
 }
 
 main();
